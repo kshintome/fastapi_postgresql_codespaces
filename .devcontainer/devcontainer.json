@@ -1,0 +1,10 @@
+
+{
+    "name": "Python FastAPI with PostgreSQL",
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
+    "forwardPorts": [5432],
+    "postCreateCommand": "pip install -r requirements.txt",
+    "remoteUser": "vscode"
+}
