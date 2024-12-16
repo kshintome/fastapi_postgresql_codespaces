@@ -1,8 +1,9 @@
 
-from fastapi import FastAPI, Depends
-from sqlalchemy.orm import Session
-from app.database import Base, engine, get_db
+from fastapi import Depends, FastAPI
 from sqlalchemy import Column, Integer, String
+from sqlalchemy.orm import Session
+
+from app.database import Base, engine, get_db
 
 # Create the FastAPI app
 app = FastAPI()
@@ -16,6 +17,10 @@ class Item(Base):
 
 # Create the database tables
 Base.metadata.create_all(bind=engine)
+
+@app.get("/")
+def read_root():
+    return {"Hello": "World"}
 
 # API endpoints
 @app.post("/items/")
